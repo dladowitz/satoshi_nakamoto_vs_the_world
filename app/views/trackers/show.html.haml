@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @tracker.name
+%p
+  %b Asset one:
+  = @tracker.asset_one
+%p
+  %b Asset two:
+  = @tracker.asset_two
+%p
+  %b Start date:
+  = @tracker.start_date
+
+= link_to 'Edit', edit_tracker_path(@tracker)
+\|
+= link_to 'Back', trackers_path

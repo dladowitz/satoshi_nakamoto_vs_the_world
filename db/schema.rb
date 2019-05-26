@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_26_224737) do
+ActiveRecord::Schema.define(version: 2019_05_26_225549) do
 
   create_table "models", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,9 +25,11 @@ ActiveRecord::Schema.define(version: 2019_05_26_224737) do
   end
 
   create_table "trackers", force: :cascade do |t|
-    t.string "asset_1"
-    t.string "asset_2"
+    t.string "name"
+    t.string "asset_one"
+    t.string "asset_two"
     t.date "start_date"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

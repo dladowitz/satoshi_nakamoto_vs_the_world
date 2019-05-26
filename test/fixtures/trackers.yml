@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  asset_1: MyString
-  asset_2: MyString
+  name: MyString
+  asset_one: MyString
+  asset_two: MyString
   start_date: 2019-05-26
 
 two:
-  asset_1: MyString
-  asset_2: MyString
+  name: MyString
+  asset_one: MyString
+  asset_two: MyString
   start_date: 2019-05-26
