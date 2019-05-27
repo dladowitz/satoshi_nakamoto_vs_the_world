@@ -4,26 +4,28 @@
   %b Name:
   = @tracker.name
 %p
+  %b Start date:
+  = @tracker.start_date  
+%p
   %b Asset one:
   = @tracker.asset_one
   %br
   Start Date: 
-  = @crypto_asset["open"]
+  = number_to_currency @crypto_asset["open"]
   %br
   Today: 
-  = @crypto_asset["close"]
+  = number_to_currency @crypto_asset["close"]
   %br
-  Return: 
-  = number_to_percentage((@crypto_asset["close"].to_f - @crypto_asset["open"].to_f) / @crypto_asset["open"].to_f * 100)
+  Total Return: 
+  %b 
+    = number_to_percentage((@crypto_asset["close"].to_f - @crypto_asset["open"].to_f) / @crypto_asset["open"].to_f * 100)
 
 
 
 %p
   %b Asset two:
   = @tracker.asset_two
-%p
-  %b Start date:
-  = @tracker.start_date
+
 
 = link_to 'Edit', edit_tracker_path(@tracker)
 \|

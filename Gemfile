@@ -10,6 +10,7 @@ gem 'devise'
 gem 'haml-rails', '~> 2.0'
 gem 'httparty'
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'omniauth-blockstack'
 gem 'puma', '~> 3.11' # Use Puma as the app server
 gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
 gem 'sqlite3' # Use sqlite3 as the database for Active Record
