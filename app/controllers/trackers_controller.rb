@@ -1,5 +1,6 @@
 class TrackersController < ApplicationController
   before_action :set_tracker, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
 
   # GET /trackers
   # GET /trackers.json
@@ -10,6 +11,9 @@ class TrackersController < ApplicationController
   # GET /trackers/1
   # GET /trackers/1.json
   def show
+    start_date = @tracker.start_date.strftime
+    nomics_data = HTTParty.get("https://api.nomics.com/v1/currencies/interval?key=#{ENV['NOMICS_KEY']}&start=#{start_date}T00%3A00%3A00Z")
+    @crypto_asset = nomics_data.select {|asset| asset["currency"] == @tracker.asset_one}.first
   end
 
   # GET /trackers/new
@@ -24,7 +28,7 @@ class TrackersController < ApplicationController
   # POST /trackers
   # POST /trackers.json
   def create
-    @tracker = Tracker.new(tracker_params)
+    @tracker = Tracker.new(tracker_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @tracker.save

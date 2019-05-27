@@ -6,6 +6,18 @@
 %p
   %b Asset one:
   = @tracker.asset_one
+  %br
+  Start Date: 
+  = @crypto_asset["open"]
+  %br
+  Today: 
+  = @crypto_asset["close"]
+  %br
+  Return: 
+  = number_to_percentage((@crypto_asset["close"].to_f - @crypto_asset["open"].to_f) / @crypto_asset["open"].to_f * 100)
+
+
+
 %p
   %b Asset two:
   = @tracker.asset_two

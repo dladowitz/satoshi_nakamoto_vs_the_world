@@ -17,6 +17,6 @@
     = f.text_field :asset_two
   .field
     = f.label :start_date
-    = f.date_select :start_date
+    = f.date_select :start_date, default: Date.parse("2019-01-01")
   .actions
     = f.submit 'Save'
