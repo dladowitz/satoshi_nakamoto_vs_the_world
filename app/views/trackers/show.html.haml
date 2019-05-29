@@ -26,6 +26,16 @@
   %b Asset two:
   = @tracker.asset_two
 
+  %br
+  Start Date: 
+  = number_to_currency @stock_asset["open"]
+  %br
+  Today: 
+  = number_to_currency @stock_asset["close"]
+  %br
+  Total Return: 
+  %b 
+    = number_to_percentage((@stock_asset["close"].to_f - @stock_asset["open"].to_f) / @stock_asset["open"].to_f * 100)
 
 = link_to 'Edit', edit_tracker_path(@tracker)
 \|

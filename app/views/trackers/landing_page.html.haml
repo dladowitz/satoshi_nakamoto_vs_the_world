@@ -1,0 +1,139 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    %title New Age - Start Bootstrap Theme
+    / Bootstrap core CSS
+    %link{:href => "bootstrap/css/bootstrap.min.css", :rel => "stylesheet"}/
+    / Custom fonts for this template
+    %link{:href => "fontawesome-free/css/all.min.css", :rel => "stylesheet"}/
+    %link{:href => "simple-line-icons/css/simple-line-icons.css", :rel => "stylesheet"}/
+    %link{:href => "https://fonts.googleapis.com/css?family=Lato", :rel => "stylesheet"}/
+    %link{:href => "https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900", :rel => "stylesheet"}/
+    %link{:href => "https://fonts.googleapis.com/css?family=Muli", :rel => "stylesheet"}/
+    / Plugin CSS
+    %link{:href => "device-mockups/device-mockups.min.css", :rel => "stylesheet"}/
+    / Custom styles for this template
+    %link{:href => "css/new-age.css", :rel => "stylesheet"}/
+  %body#page-top
+    / Navigation
+    %nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top
+      .container
+        %a.navbar-brand.js-scroll-trigger{:href => "#page-top"} Satoshi Nakamoto vs The World
+        %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarResponsive", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarResponsive", "data-toggle" => "collapse", :type => "button"}
+          Menu
+          %i.fas.fa-bars
+        #navbarResponsive.collapse.navbar-collapse
+          %ul.navbar-nav.ml-auto
+            %li.nav-item
+              %a.nav-link.js-scroll-trigger{:href => "#download"} Download
+            %li.nav-item
+              %a.nav-link.js-scroll-trigger{:href => "#features"} Features
+            %li.nav-item
+              %a.nav-link.js-scroll-trigger{:href => "#contact"} Contact
+    %header.masthead
+      .container.h-100
+        .row.h-100
+          .col-lg-7.my-auto
+            .header-content.mx-auto
+              %h1.mb-5 New Age is an app landing page that will help you beautifully showcase your new mobile app, or anything else!
+              %a.btn.btn-outline.btn-xl.js-scroll-trigger{:href => "#download"} Start Now for Free!
+          .col-lg-5.my-auto
+            %img.img-fluid#poster{:alt => "", :src => "img/landing.jpg"}/
+    %section#download.download.bg-primary.text-center
+      .container
+        .row
+          .col-md-8.mx-auto
+            %h2.section-heading Discover what all the buzz is about!
+            %p Our app is available on any mobile device! Download now to get started!
+            .badges
+              %a.badge-link{:href => "#"}
+                %img{:alt => "", :src => "img/google-play-badge.svg"}/
+              %a.badge-link{:href => "#"}
+                %img{:alt => "", :src => "img/app-store-badge.svg"}/
+    %section#features.features
+      .container
+        .section-heading.text-center
+          %h2 Unlimited Features, Unlimited Fun
+          %p.text-muted Check out what you can do with this app theme!
+          %hr/
+        .row
+          .col-lg-4.my-auto
+            .device-container
+              .device-mockup.iphone6_plus.portrait.white
+                .device
+                  .screen
+                    / Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else!
+                    %img.img-fluid{:alt => "", :src => "img/demo-screen-1.jpg"}/
+                  .button
+                    / You can hook the "home button" to some JavaScript events or just remove it
+          .col-lg-8.my-auto
+            .container-fluid
+              .row
+                .col-lg-6
+                  .feature-item
+                    %i.icon-screen-smartphone.text-primary
+                    %h3 Device Mockups
+                    %p.text-muted Ready to use HTML/CSS device mockups, no Photoshop required!
+                .col-lg-6
+                  .feature-item
+                    %i.icon-camera.text-primary
+                    %h3 Flexible Use
+                    %p.text-muted Put an image, video, animation, or anything else in the screen!
+              .row
+                .col-lg-6
+                  .feature-item
+                    %i.icon-present.text-primary
+                    %h3 Free to Use
+                    %p.text-muted As always, this theme is free to download and use for any purpose!
+                .col-lg-6
+                  .feature-item
+                    %i.icon-lock-open.text-primary
+                    %h3 Open Source
+                    %p.text-muted Since this theme is MIT licensed, you can use it commercially!
+    %section.cta
+      .cta-content
+        .container
+          %h2
+            Stop waiting.
+            %br>/
+            Start building.
+          %a.btn.btn-outline.btn-xl.js-scroll-trigger{:href => "#contact"} Let's Get Started!
+      .overlay
+    %section#contact.contact.bg-primary
+      .container
+        %h2
+          We
+          %i.fas.fa-heart
+          new friends!
+        %ul.list-inline.list-social
+          %li.list-inline-item.social-twitter
+            %a{:href => "#"}
+              %i.fab.fa-twitter
+          %li.list-inline-item.social-facebook
+            %a{:href => "#"}
+              %i.fab.fa-facebook-f
+          %li.list-inline-item.social-google-plus
+            %a{:href => "#"}
+              %i.fab.fa-google-plus-g
+    %footer
+      .container
+        %p © Your Website 2019. All Rights Reserved.
+        %ul.list-inline
+          %li.list-inline-item
+            %a{:href => "#"} Privacy
+          %li.list-inline-item
+            %a{:href => "#"} Terms
+          %li.list-inline-item
+            %a{:href => "#"} FAQ
+    / Bootstrap core JavaScript
+    %script{:src => "jquery/jquery.min.js"}
+    %script{:src => "bootstrap/js/bootstrap.bundle.min.js"}
+    / Plugin JavaScript
+    %script{:src => "jquery-easing/jquery.easing.min.js"}
+    / Custom scripts for this template
+    %script{:src => "js/new-age.js"}

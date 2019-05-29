@@ -1,8 +1,9 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  root to: "trackers#index"
+  root to: "trackers#landing_page"
 
   resources :trackers
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   # devise_scope :user do

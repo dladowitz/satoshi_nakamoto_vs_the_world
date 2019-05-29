@@ -1,6 +1,14 @@
 class TrackersController < ApplicationController
   before_action :set_tracker, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :landing_page]
+
+  ALPHA_VANTAGE_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&apikey=#{ENV['ALPHA_VANTAGE_KEY']}"
+  NOMICS_URL =        "https://api.nomics.com/v1/currencies/interval?key=#{ENV['NOMICS_KEY']}"
+
+  def landing_page
+  
+  end
+
 
   # GET /trackers
   # GET /trackers.json
@@ -11,9 +19,8 @@ class TrackersController < ApplicationController
   # GET /trackers/1
   # GET /trackers/1.json
   def show
-    start_date = @tracker.start_date.strftime
-    nomics_data = HTTParty.get("https://api.nomics.com/v1/currencies/interval?key=#{ENV['NOMICS_KEY']}&start=#{start_date}T00%3A00%3A00Z")
-    @crypto_asset = nomics_data.select {|asset| asset["currency"] == @tracker.asset_one}.first
+    @crypto_asset = crypto_asset_data
+    @stock_asset = stock_asset_data
   end
 
   # GET /trackers/new
@@ -74,5 +81,19 @@ class TrackersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tracker_params
       params.require(:tracker).permit(:name, :asset_one, :asset_two, :start_date)
+    end
+
+    def crypto_asset_data
+      start_date = @tracker.start_date.strftime
+      nomics_data = HTTParty.get(NOMICS_URL + "&start=#{start_date}T00%3A00%3A00Z")
+      nomics_data.select {|asset| asset["currency"] == @tracker.asset_one}.first
+    end
+
+    def stock_asset_data
+      start_date = (@tracker.start_date.beginning_of_month - 1.day).to_s
+      data = HTTParty.get(ALPHA_VANTAGE_URL + "&symbol=#{@tracker.asset_two}")
+      close_date = data["Meta Data"]["3. Last Refreshed"]
+
+      { "open" => data["Monthly Time Series"][start_date]["4. close"], "close" => data["Monthly Time Series"][close_date]["4. close"] }
     end
 end
