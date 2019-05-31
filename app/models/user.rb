@@ -6,6 +6,9 @@ class User < ApplicationRecord
          #, :validatable
         #  https://github.com/plataformatec/devise/blob/master/lib/devise/models/validatable.rb
 
+
+  has_many :trackers      
+
   # class methods
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|

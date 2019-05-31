@@ -1,29 +1,31 @@
-= image_tag 'landing', width: "400"
 
-%h1 Listing trackers
+.jumbotron
+  %h1.display-4 BTC vs The World!
+  %p.lead Track (almost) any cryto asset against public stocks, mutual funds and ETFs.
+  -# %hr.my-4/
+  -# %p Other stuff maybe
+  %a.btn.btn-primary.btn-lg{:href => new_tracker_path, :role => "button"} Create New Tracker
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Asset one
-      %th Asset two
-      %th Start date
-      %th
-      %th
-      %th
 
-  %tbody
-    - @trackers.each do |tracker|
-      %tr
-        %td= tracker.name
-        %td= tracker.asset_one
-        %td= tracker.asset_two
-        %td= tracker.start_date
-        %td= link_to 'Show', tracker
-        %td= link_to 'Edit', edit_tracker_path(tracker)
-        %td= link_to 'Destroy', tracker, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
+%h1 Your Current Trackers
 
-= link_to 'New Tracker', new_tracker_path
+.row
+  - @trackers.each do |tracker|
+    .col-lg-4
+      .card{:style => "width: 18rem;"}
+        %img.card-img-top{:alt => "Card image cap", :src => "https://codepen.io/eanbowman/pen/BqtvD/image/large.png", width: 75}/
+        .card-body
+          %h5.card-title= tracker.name
+          %h6.card-text
+            %b Start Date:
+            = tracker.start_date
+          %p.card-text
+            %b Crypto Asset: 
+            = tracker.asset_one
+          %p.card-text
+            %b Traditional Asset:
+            = tracker.asset_two
+          %a.btn.btn-primary{:href => tracker_path(tracker)} View Details
+
+

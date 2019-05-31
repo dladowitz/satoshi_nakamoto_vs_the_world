@@ -5,11 +5,13 @@ ruby '2.4.4'
 gem 'rails', '~> 5.2.3' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
 gem 'bootsnap', '>= 1.1.0', require: false # Reduces boot times through caching; required in config/boot.rb
+gem 'bootstrap', '~> 4.3.1'
 gem 'coffee-rails', '~> 4.2' # Use CoffeeScript for .coffee assets and views
 gem 'devise'
 gem 'haml-rails', '~> 2.0'
 gem 'httparty'
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jquery-rails'
 gem 'omniauth-blockstack'
 gem 'puma', '~> 3.11' # Use Puma as the app server
 gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
