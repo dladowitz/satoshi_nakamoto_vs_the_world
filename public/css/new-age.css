@@ -6,13 +6,18 @@
 
 /* Custom additions */
 
-/* #poster {
+#poster {
   box-shadow: 0 10px 16px 0 rgba(45, 6, 6, 0.81), 0 6px 20px 0 rgb(212, 10, 10);
-} */
+}
 
 .morgancreekquote {
-  margin-bottom: 150px !important;
-  color: red !important;
+  margin-top: 150px !important;
+  margin: auto;
+  width: 80%;
+}
+
+.coindesk-article {
+  color: #101056 !important;
 }
 
 /* Template styles */
