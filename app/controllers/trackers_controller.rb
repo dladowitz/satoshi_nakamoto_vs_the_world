@@ -1,14 +1,9 @@
 class TrackersController < ApplicationController
   before_action :set_tracker, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:landing_page]
+  before_action :authenticate_user!
 
   ALPHA_VANTAGE_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&apikey=#{ENV['ALPHA_VANTAGE_KEY']}"
   NOMICS_URL =        "https://api.nomics.com/v1/currencies/interval?key=#{ENV['NOMICS_KEY']}"
-
-  def landing_page
-  
-  end
-
 
   # GET /trackers
   # GET /trackers.json

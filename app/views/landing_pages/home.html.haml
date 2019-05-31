@@ -6,7 +6,7 @@
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
     %meta{:content => "", :name => "description"}/
     %meta{:content => "", :name => "author"}/
-    %title New Age - Start Bootstrap Theme
+    %title Satoshi Vs The World
     / Bootstrap core CSS
     %link{:href => "bootstrap/css/bootstrap.min.css", :rel => "stylesheet"}/
     / Custom fonts for this template
@@ -30,89 +30,90 @@
         #navbarResponsive.collapse.navbar-collapse
           %ul.navbar-nav.ml-auto
             %li.nav-item
-              %a.nav-link.js-scroll-trigger{:href => "#download"} Download
-            %li.nav-item
-              %a.nav-link.js-scroll-trigger{:href => "#features"} Features
-            %li.nav-item
-              %a.nav-link.js-scroll-trigger{:href => "#contact"} Contact
+              %a.nav-link.js-scroll-trigger{:href => "#download"} Login with Blockstack
+            -# %li.nav-item
+            -#   %a.nav-link.js-scroll-trigger{:href => "#features"} Features
+            -# %li.nav-item
+            -#   %a.nav-link.js-scroll-trigger{:href => "#contact"} Contact
     %header.masthead
       .container.h-100
         .row.h-100
-          .col-lg-7.my-auto
+          .col-md-6.my-auto
             .header-content.mx-auto
               %h1.mb-5 Track a crypto asset vs the S&P 500 or other traditional assets. 
               %a.btn.btn-outline.btn-xl.js-scroll-trigger#start-tracking{:href => trackers_path} Start tracking now
             .morgancreekquote
               “The challenge…is open to the professional investor who believes cryptocurrencies are worthless or that public equities will be better over the next decade. Not only do the principals of Morgan Creek Digital disagree, but we are willing to put our money where our mouth is.” 
+              %br  
               %a.coindesk-article{:href => "https://www.coindesk.com/morgan-creek-digital-is-betting-1-million-that-crypto-can-beat-the-sp-500"} - Morgan Creek Digital  
-          .col-lg-5.my-auto
+          .col-10.col-md-6.my-auto
             %img.img-fluid#poster{:alt => "", :src => "img/landing.jpg"}/
     %section#download.download.bg-primary.text-center
       .container
         .row
           .col-md-8.mx-auto
-            %h2.section-heading Discover what all the buzz is about!
-            %p Our app is available on any mobile device! Download now to get started!
-            .badges
-              %a.badge-link{:href => "#"}
-                %img{:alt => "", :src => "img/google-play-badge.svg"}/
-              %a.badge-link{:href => "#"}
-                %img{:alt => "", :src => "img/app-store-badge.svg"}/
-    %section#features.features
-      .container
-        .section-heading.text-center
-          %h2 Unlimited Features, Unlimited Fun
-          %p.text-muted Check out what you can do with this app theme!
-          %hr/
-        .row
-          .col-lg-4.my-auto
-            .device-container
-              .device-mockup.iphone6_plus.portrait.white
-                .device
-                  .screen
-                    / Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else!
-                    %img.img-fluid{:alt => "", :src => "img/demo-screen-1.jpg"}/
-                  .button
-                    / You can hook the "home button" to some JavaScript events or just remove it
-          .col-lg-8.my-auto
-            .container-fluid
-              .row
-                .col-lg-6
-                  .feature-item
-                    %i.icon-screen-smartphone.text-primary
-                    %h3 Device Mockups
-                    %p.text-muted Ready to use HTML/CSS device mockups, no Photoshop required!
-                .col-lg-6
-                  .feature-item
-                    %i.icon-camera.text-primary
-                    %h3 Flexible Use
-                    %p.text-muted Put an image, video, animation, or anything else in the screen!
-              .row
-                .col-lg-6
-                  .feature-item
-                    %i.icon-present.text-primary
-                    %h3 Free to Use
-                    %p.text-muted As always, this theme is free to download and use for any purpose!
-                .col-lg-6
-                  .feature-item
-                    %i.icon-lock-open.text-primary
-                    %h3 Open Source
-                    %p.text-muted Since this theme is MIT licensed, you can use it commercially!
+            %h2.section-heading 
+              Long Bitcoin,
+              %br Short The World.
+            -# %p Our app is available on any mobile device! Download now to get started!
+            -# .badges
+            -#   %a.badge-link{:href => "#"}
+            -#     %img{:alt => "", :src => "img/google-play-badge.svg"}/
+            -#   %a.badge-link{:href => "#"}
+            -#     %img{:alt => "", :src => "img/app-store-badge.svg"}/
+    -# %section#features.features
+    -#   .container
+    -#     .section-heading.text-center
+    -#       %h2 Unlimited Features, Unlimited Fun
+    -#       %p.text-muted Check out what you can do with this app theme!
+    -#       %hr/
+    -#     .row
+    -#       .col-lg-4.my-auto
+    -#         .device-container
+    -#           .device-mockup.iphone6_plus.portrait.white
+    -#             .device
+    -#               .screen
+    -#                 / Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else!
+    -#                 %img.img-fluid{:alt => "", :src => "img/demo-screen-1.jpg"}/
+    -#               .button
+    -#                 / You can hook the "home button" to some JavaScript events or just remove it
+    -#       .col-lg-8.my-auto
+    -#         .container-fluid
+    -#           .row
+    -#             .col-lg-6
+    -#               .feature-item
+    -#                 %i.icon-screen-smartphone.text-primary
+    -#                 %h3 Device Mockups
+    -#                 %p.text-muted Ready to use HTML/CSS device mockups, no Photoshop required!
+    -#             .col-lg-6
+    -#               .feature-item
+    -#                 %i.icon-camera.text-primary
+    -#                 %h3 Flexible Use
+    -#                 %p.text-muted Put an image, video, animation, or anything else in the screen!
+    -#           .row
+    -#             .col-lg-6
+    -#               .feature-item
+    -#                 %i.icon-present.text-primary
+    -#                 %h3 Free to Use
+    -#                 %p.text-muted As always, this theme is free to download and use for any purpose!
+    -#             .col-lg-6
+    -#               .feature-item
+    -#                 %i.icon-lock-open.text-primary
+    -#                 %h3 Open Source
+    -#                 %p.text-muted Since this theme is MIT licensed, you can use it commercially!
     %section.cta
       .cta-content
         .container
           %h2
-            Stop waiting.
-            %br>/
-            Start building.
-          %a.btn.btn-outline.btn-xl.js-scroll-trigger{:href => "#contact"} Let's Get Started!
+            Unstoppable Money
+          -#   %br>/
+          -#   Start building.
+          -# %a.btn.btn-outline.btn-xl.js-scroll-trigger{:href => "#contact"} Let's Get Started!
       .overlay
     %section#contact.contact.bg-primary
       .container
-        %h2
-          We
-          %i.fas.fa-heart
-          new friends!
+        %h4
+          Donate some satoshis
         %ul.list-inline.list-social
           %li.list-inline-item.social-twitter
             %a{:href => "#"}
@@ -125,14 +126,14 @@
               %i.fab.fa-google-plus-g
     %footer
       .container
-        %p © Your Website 2019. All Rights Reserved.
+        -# %p Long Bitcoin, Short The World
         %ul.list-inline
           %li.list-inline-item
-            %a{:href => "#"} Privacy
-          %li.list-inline-item
-            %a{:href => "#"} Terms
-          %li.list-inline-item
-            %a{:href => "#"} FAQ
+            %a{:href => "#"} Cross Border, Unhackable, Permissionless, Inflationary Resistant, Decentralized
+          -# %li.list-inline-item
+          -#   %a{:href => "#"} Terms
+          -# %li.list-inline-item
+          -#   %a{:href => "#"} FAQ
     / Bootstrap core JavaScript
     %script{:src => "jquery/jquery.min.js"}
     %script{:src => "bootstrap/js/bootstrap.bundle.min.js"}

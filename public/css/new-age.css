@@ -8,6 +8,8 @@
 
 #poster {
   box-shadow: 0 10px 16px 0 rgba(45, 6, 6, 0.81), 0 6px 20px 0 rgb(212, 10, 10);
+  margin-top: 50px;
+  margin-left: 40px;
 }
 
 #start-tracking{
@@ -314,7 +316,7 @@ section.features .feature-item i {
 section.cta {
   position: relative;
   padding: 250px 0;
-  background-image: url("../img/bg-cta.jpg");
+  background-image: url("../img/mining.jpg");
   background-position: center;
   background-size: cover;
 }
