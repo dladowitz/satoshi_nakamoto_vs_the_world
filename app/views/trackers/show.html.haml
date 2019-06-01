@@ -1,42 +1,70 @@
+:javascript
+  $(document).ready( function() {
+    console.log("Runing Sparkline script")
+
+    /** This code runs when everything has been loaded on the page */
+    /* Inline sparklines take their values from the contents of the tag */
+    $('.inlinesparkline').sparkline('html', { type: 'line', width: '100%', height: '100%', tooltipPrefix: "$" }); 
+  } );
+
+
+-# fixes tooltip formatting
+:css
+  .jqstooltip {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+
+
 %p#notice= notice
 
-%p
-  %b Name:
-  = @tracker.name
-%p
-  %b Start date:
-  = @tracker.start_date  
-%p
-  %b Asset one:
-  = @tracker.asset_one
-  %br
-  Start Date: 
-  = number_to_currency @crypto_asset["open"]
-  %br
-  Today: 
-  = number_to_currency @crypto_asset["close"]
-  %br
-  Total Return: 
-  %b 
-    = number_to_percentage((@crypto_asset["close"].to_f - @crypto_asset["open"].to_f) / @crypto_asset["open"].to_f * 100)
+.row
+  %h2.mb-5
+    %b Start Date:
+    = @tracker.start_date.strftime("%B, %d, %Y")
+    = link_to "Edit Tracker", edit_tracker_path(@tracker), class: "btn btn-primary ml-2"
+
+.row
+  .col-lg-6
+    .card
+      -# %img.card-img-top{:alt => "Card image cap", :src => "https://codepen.io/eanbowman/pen/BqtvD/image/large.png", width: 75}/
+      %span.inlinesparkline
+        = @crypto_asset['prices'].map(&:to_i).join ", "
+      .card-body
+        %h5.card-title= @tracker.asset_one
+        %h6.card-text
+          %b Start: 
+          = number_to_currency @crypto_asset['prices'].first
+        %h6.card-text
+          %b Today: 
+          = number_to_currency @crypto_asset['prices'].last
+        %h6.card-text
+          - return_percentage = (@crypto_asset['prices'].last.to_f - @crypto_asset['prices'].first.to_f) / @crypto_asset['prices'].first.to_f
+          %b Return: 
+          = number_to_percentage (return_percentage * 100)
+        .card-footer.bg-transparent
+          A $10,000 investment would now be
+          = number_to_currency(10000 + 10000 * return_percentage)
 
 
-
-%p
-  %b Asset two:
-  = @tracker.asset_two
-
-  %br
-  Start Date: 
-  = number_to_currency @stock_asset["open"]
-  %br
-  Today: 
-  = number_to_currency @stock_asset["close"]
-  %br
-  Total Return: 
-  %b 
-    = number_to_percentage((@stock_asset["close"].to_f - @stock_asset["open"].to_f) / @stock_asset["open"].to_f * 100)
-
-= link_to 'Edit', edit_tracker_path(@tracker)
-\|
-= link_to 'Back', trackers_path
+  .col-lg-6
+    .card
+      -# %img.card-img-top{:alt => "Card image cap", :src => "https://codepen.io/eanbowman/pen/BqtvD/image/large.png", width: 75}/
+      %span.inlinesparkline
+        = @stock_asset['time_series'].map(&:to_i).join ", "
+      .card-body
+        %h5.card-title= @tracker.asset_two
+        %h6.card-text
+          %b Start:
+          = number_to_currency @stock_asset["open"]
+        %h6.card-text
+          %b Today:
+          = number_to_currency @stock_asset["close"]      
+        %h6.card-text
+          - return_percentage = (@stock_asset['close'].to_f - @stock_asset['open'].to_f) / @stock_asset['open'].to_f
+          %b Return: 
+          = number_to_percentage (return_percentage * 100)
+        .card-footer.bg-transparent
+          A $10,000 investment would now be
+          = number_to_currency(10000 + 10000 * return_percentage)

@@ -2,8 +2,8 @@ class TrackersController < ApplicationController
   before_action :set_tracker, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  ALPHA_VANTAGE_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&apikey=#{ENV['ALPHA_VANTAGE_KEY']}"
-  NOMICS_URL =        "https://api.nomics.com/v1/currencies/interval?key=#{ENV['NOMICS_KEY']}"
+  ALPHA_VANTAGE_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&apikey=#{ENV['ALPHA_VANTAGE_KEY']}"
+  NOMICS_URL =        "https://api.nomics.com/v1/currencies/sparkline?key=#{ENV['NOMICS_KEY']}"
 
   # GET /trackers
   # GET /trackers.json
@@ -85,10 +85,12 @@ class TrackersController < ApplicationController
     end
 
     def stock_asset_data
-      start_date = (@tracker.start_date.beginning_of_month - 1.day).to_s
+      start_date = @tracker.start_date.to_s
       data = HTTParty.get(ALPHA_VANTAGE_URL + "&symbol=#{@tracker.asset_two}")
       close_date = data["Meta Data"]["3. Last Refreshed"]
 
-      { "open" => data["Monthly Time Series"][start_date]["4. close"], "close" => data["Monthly Time Series"][close_date]["4. close"] }
+      time_series = data["Weekly Time Series"].map {|date| date[1]["4. close"] if date[0] >= start_date }.compact.reverse
+
+      { "open" => time_series.first, "close" => time_series.last, "time_series" => time_series }
     end
 end
