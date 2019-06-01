@@ -42,7 +42,7 @@
         %h6.card-text
           - return_percentage = (@crypto_asset['prices'].last.to_f - @crypto_asset['prices'].first.to_f) / @crypto_asset['prices'].first.to_f
           %b Return: 
-          = number_to_percentage (return_percentage * 100)
+          = number_to_percentage(return_percentage * 100, precision: 2)
         .card-footer.bg-transparent
           A $10,000 investment would now be
           = number_to_currency(10000 + 10000 * return_percentage)
@@ -67,4 +67,4 @@
           = number_to_percentage (return_percentage * 100)
         .card-footer.bg-transparent
           A $10,000 investment would now be
-          = number_to_currency(10000 + 10000 * return_percentage)
+          = number_to_currency(10000 + 10000 * return_percentage, precision: 2)

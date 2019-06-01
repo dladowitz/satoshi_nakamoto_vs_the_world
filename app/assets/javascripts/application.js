@@ -17,6 +17,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require bootstrap-select
 
 //= require_tree .
 

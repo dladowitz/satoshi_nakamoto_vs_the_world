@@ -1,22 +1,29 @@
-= form_for @tracker do |f|
-  - if @tracker.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@tracker.errors.count, "error")} prohibited this tracker from being saved:"
-      %ul
-        - @tracker.errors.full_messages.each do |message|
-          %li= message
+.row
+  .col-sm-6
+    = form_for @tracker do |f|
+      - if @tracker.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@tracker.errors.count, "error")} prohibited this tracker from being saved:"
+          %ul
+            - @tracker.errors.full_messages.each do |message|
+              %li= message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :asset_one
-    = f.text_field :asset_one
-  .field
-    = f.label :asset_two
-    = f.text_field :asset_two
-  .field
-    = f.label :start_date
-    = f.date_select :start_date, default: Date.parse("2019-01-01")
-  .actions
-    = f.submit 'Save'
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: "form-control", placeholder: "BTC vs S&P 500"
+      .form-group
+        = f.label :asset_one
+        %br
+        = f.select :asset_one, @valid_crypto_assets, {}, {"class" => "selectpicker", "data-live-search" => "true"}
+
+
+      .form-group
+        = f.label :asset_two
+        = f.text_field :asset_two, class: "form-control"
+      .form-group
+        = f.label :start_date
+        = f.date_select :start_date, default: Date.parse("2019-01-01"), class: "form-control"
+
+      = f.submit 'Save', class: "btn btn-primary"
+
+
