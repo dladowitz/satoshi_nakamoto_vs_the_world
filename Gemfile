@@ -8,6 +8,7 @@ gem 'bootsnap', '>= 1.1.0', require: false # Reduces boot times through caching;
 gem 'bootstrap', '~> 4.3.1'
 gem 'coffee-rails', '~> 4.2' # Use CoffeeScript for .coffee assets and views
 gem 'devise'
+gem 'gon'
 gem 'haml-rails', '~> 2.0'
 gem 'httparty'
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

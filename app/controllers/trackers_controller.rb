@@ -25,6 +25,8 @@ class TrackersController < ApplicationController
     @valid_crypto_assets = JSON.parse(Setting.find_by(key: :nomics_currencies).value)
     @valid_crypto_assets = @valid_crypto_assets.map{ |asset| [asset["currency"]] }.flatten
     @valid_crypto_assets.unshift("BTC", "ETH", "BNB", "ZRX", "RVN", "ZRX", "EOS", "LTC", "XLM", "ADA", "XMR").uniq!
+
+    @valid_stock_assets = StockSymbol.nyse + StockSymbol.nasdaq + StockSymbol.american_exchange + StockSymbol.us_mutual_funds
   end
 
   # GET /trackers/1/edit
@@ -110,8 +112,6 @@ class TrackersController < ApplicationController
 
     Rails.logger.info "Pulling ticker symbols"
     supported_crypto_assets = Setting.find_or_create_by(key: "nomics_currencies")
-
     supported_crypto_assets.update(value: nomics_currencies.body)
   end
-
 end
