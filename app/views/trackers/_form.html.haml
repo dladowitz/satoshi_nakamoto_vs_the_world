@@ -1,3 +1,11 @@
+:javascript
+  $(document).ready( function() {
+    console.log("Tracker Form Page")
+
+    $('#dp1').datepicker()
+
+  } );
+
 .row
   .col-sm-6
     = form_for @tracker do |f|
@@ -21,30 +29,6 @@
         = f.select :asset_two, @valid_stock_assets, {}, {"class" => "selectpicker", "data-live-search" => "true"}
       .form-group
         = f.label :start_date
-        = f.date_select :start_date, default: Date.parse("2019-01-01"), class: "form-control datepicker"
+        = f.text_field :start_date, {:size => "16", :type => "text", :value => "01/01/2019", :id => "dp1", :class => 'form-control', "data-date-format" => "dd/mm/yyyy"}
 
       = f.submit 'Save', class: "btn btn-primary"
-
--# Doh, stupid alphavantage has a 5 call per minute limit
--# :javascript
-  $(document).ready( function() {
-    console.log("Loading Alphavantage Search")
-    var alphavantage_url = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&apikey=demo"
-
-    function alphaSearch(data) {
-      console.log("running alphaSearch with: ", data);
-    }
-
-    $("#tracker_asset_two").keyup(function() {
-      var search_string = $("#tracker_asset_two").val() 
-      console.log("Searching for: ", search_string);
-
-      $.get( "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&apikey=gon.alphavantage_key&keywords=" + search_string, function( data ) {
-        console.log(data)
-        var first_result = data.bestMatches[0]["1. symbol"]
-        console.log(first_result)
-        $("#tracker_asset_two").val(first_result);
-      });
-    });
-  } )
-

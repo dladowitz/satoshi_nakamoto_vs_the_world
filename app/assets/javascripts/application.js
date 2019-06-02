@@ -17,8 +17,8 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
-//= require bootstrap-datepicker
 //= require bootstrap-select
+//= require bootstrap-datepicker
 
 //= require_tree .
 
