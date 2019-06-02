@@ -21,7 +21,7 @@
         = f.select :asset_two, @valid_stock_assets, {}, {"class" => "selectpicker", "data-live-search" => "true"}
       .form-group
         = f.label :start_date
-        = f.date_select :start_date, default: Date.parse("2019-01-01"), class: "form-control"
+        = f.date_select :start_date, default: Date.parse("2019-01-01"), class: "form-control datepicker"
 
       = f.submit 'Save', class: "btn btn-primary"
 
