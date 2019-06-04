@@ -16,12 +16,17 @@ gem 'jquery-rails'
 gem 'omniauth-blockstack'
 gem 'puma', '~> 3.11' # Use Puma as the app server
 gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
-gem 'sqlite3' # Use sqlite3 as the database for Active Record
+
 gem 'turbolinks', '~> 5' # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'sqlite3' # Use sqlite3 as the database for Active Record
+end
+
+group :production do
+  gem 'pg'
 end
 
 group :development do

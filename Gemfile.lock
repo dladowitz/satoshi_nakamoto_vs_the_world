@@ -173,6 +173,7 @@ GEM
       blockstack (~> 8.0)
       omniauth (~> 1.1)
     orm_adapter (0.5.0)
+    pg (1.0.0)
     popper_js (1.14.5)
     public_suffix (3.0.3)
     puma (3.12.1)
@@ -300,6 +301,7 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   omniauth-blockstack
+  pg
   puma (~> 3.11)
   rails (~> 5.2.3)
   sass-rails (~> 5.0)
