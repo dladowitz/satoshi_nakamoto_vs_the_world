@@ -20,23 +20,15 @@ class TrackersController < ApplicationController
 
   # GET /trackers/new
   def new
-    pull_ticker_symbols
+    pull_nomics_symbols
     @tracker = Tracker.new
-    @valid_crypto_assets = JSON.parse(Setting.find_by(key: :nomics_currencies).value)
-    @valid_crypto_assets = @valid_crypto_assets.map{ |asset| [asset["currency"]] }.flatten
-    @valid_crypto_assets.unshift("BTC", "ETH", "BNB", "ZRX", "RVN", "ZRX", "EOS", "LTC", "XLM", "ADA", "XMR").uniq!
-
-    @valid_stock_assets = StockSymbol.nyse + StockSymbol.nasdaq + StockSymbol.american_exchange + StockSymbol.us_mutual_funds
+    set_valid_assets
   end
 
   # GET /trackers/1/edit
   def edit
     @tracker = Tracker.find params[:id]
-    @valid_crypto_assets = JSON.parse(Setting.find_by(key: :nomics_currencies).value)
-    @valid_crypto_assets = @valid_crypto_assets.map{ |asset| [asset["currency"]] }.flatten
-    @valid_crypto_assets.unshift("BTC", "ETH", "BNB", "ZRX", "RVN", "ZRX", "EOS", "LTC", "XLM", "ADA", "XMR").uniq!
-
-    @valid_stock_assets = StockSymbol.nyse + StockSymbol.nasdaq + StockSymbol.american_exchange + StockSymbol.us_mutual_funds
+    set_valid_assets
   end
 
   # POST /trackers
@@ -49,6 +41,7 @@ class TrackersController < ApplicationController
         format.html { redirect_to @tracker, notice: 'Tracker was successfully created.' }
         format.json { render :show, status: :created, location: @tracker }
       else
+        set_valid_assets
         format.html { render :new }
         format.json { render json: @tracker.errors, status: :unprocessable_entity }
       end
@@ -112,12 +105,20 @@ class TrackersController < ApplicationController
     HTTParty.get(nomics_url)
   end
 
-  def pull_ticker_symbols
-    # Only do this 10% of the time
-    # return if rand(10) < 2
+  def pull_nomics_symbols
+    # Only do this 1% of the time
+    return if rand(100) < 98
 
-    Rails.logger.info "Pulling ticker symbols"
+    Rails.logger.info "Pulling nomics symbols"
     supported_crypto_assets = Setting.find_or_create_by(key: "nomics_currencies")
     supported_crypto_assets.update(value: nomics_currencies.body)
+  end
+
+  def set_valid_assets
+    @valid_crypto_assets = JSON.parse(Setting.find_by(key: :nomics_currencies).value)
+    @valid_crypto_assets = @valid_crypto_assets.map{ |asset| [asset["currency"]] }.flatten
+    @valid_crypto_assets.unshift("BTC", "ETH", "BNB", "ZRX", "RVN", "ZRX", "EOS", "LTC", "XLM", "ADA", "XMR").uniq!
+
+    @valid_stock_assets = StockSymbol.nyse + StockSymbol.nasdaq + StockSymbol.american_exchange + StockSymbol.us_mutual_funds
   end
 end

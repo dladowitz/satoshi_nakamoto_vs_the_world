@@ -9,10 +9,14 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = include_gon
   %body
+    = render "layouts/header"
+
+    - if notice
+      .alert.alert-primary{role: "alert"}
+        = notice
+    -if alert 
+      .alert.alert-danger{role: "alert"}
+        = alert    
+
     .container
-      = render "layouts/header"
-      
-      %p.notice= notice
-      %p.alert= alert
-      
       = yield

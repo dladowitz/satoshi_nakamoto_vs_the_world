@@ -1,9 +1,10 @@
 :javascript
   $(document).ready( function() {
-    console.log("Tracker Form Page")
-
+    console.log("Tracker Form JS Loading...")
     $('#dp1').datepicker()
-
+    
+    // Need to fire this manually as it didn't always run
+    $('.custom-select-picker').selectpicker();
   } );
 
 .row
@@ -11,10 +12,8 @@
     = form_for @tracker do |f|
       - if @tracker.errors.any?
         #error_explanation
-          %h2= "#{pluralize(@tracker.errors.count, "error")} prohibited this tracker from being saved:"
-          %ul
-            - @tracker.errors.full_messages.each do |message|
-              %li= message
+          - @tracker.errors.full_messages.each do |message|
+            .alert.alert-danger{role: 'alert'}= message
 
       .form-group
         = f.label :name
@@ -22,11 +21,11 @@
       .form-group
         = f.label :asset_one
         %br
-        = f.select :asset_one, @valid_crypto_assets, {}, {"class" => "selectpicker", "data-live-search" => "true"}
+        = f.select :asset_one, @valid_crypto_assets, {}, {"class" => "custom-select-picker", "data-live-search" => "true"}
       .form-group
         = f.label :asset_two
         %br
-        = f.select :asset_two, @valid_stock_assets, {}, {"class" => "selectpicker", "data-live-search" => "true"}
+        = f.select :asset_two, @valid_stock_assets, {}, {"class" => "custom-select-picker", "data-live-search" => "true"}
       .form-group
         = f.label :start_date
         = f.text_field :start_date, {:size => "16", :type => "text", :value => "01/01/2019", :id => "dp1", :class => 'form-control', "data-date-format" => "dd/mm/yyyy"}

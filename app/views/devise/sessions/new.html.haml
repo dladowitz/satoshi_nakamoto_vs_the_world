@@ -1,7 +1,6 @@
-%h2 Log in
-
-
 
 -# = render "devise/shared/links"
-
-= link_to "Sign in with Blockstack", user_blockstack_omniauth_authorize_path
+.row
+  .col-md-4.offset-md-4
+    = image_tag '/assets/blockstack_logo', alt: '', height: '', width: '', class: ''
+    = link_to "Sign in with Blockstack", user_blockstack_omniauth_authorize_path, class: 'btn btn-large btn-primary ml-3'

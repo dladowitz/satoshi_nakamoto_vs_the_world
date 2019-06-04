@@ -23,14 +23,19 @@
     / Navigation
     %nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top
       .container
-        %a.navbar-brand.js-scroll-trigger{:href => "#page-top"} Satoshi Nakamoto vs The World
+        .navbar-brand.js-scroll-trigger Satoshi Nakamoto vs The World
         %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarResponsive", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarResponsive", "data-toggle" => "collapse", :type => "button"}
           Menu
           %i.fas.fa-bars
         #navbarResponsive.collapse.navbar-collapse
           %ul.navbar-nav.ml-auto
             %li.nav-item
-              %a.nav-link.js-scroll-trigger{:href => "#download"} Login with Blockstack
+              - if !current_user
+                %a.nav-link.js-scroll-trigger{:href => new_user_session_path} Login with Blockstack
+              - else 
+                Logged in with Blockstack
+                |
+                = link_to "Logout", destroy_devise_user_session_path
             -# %li.nav-item
             -#   %a.nav-link.js-scroll-trigger{:href => "#features"} Features
             -# %li.nav-item

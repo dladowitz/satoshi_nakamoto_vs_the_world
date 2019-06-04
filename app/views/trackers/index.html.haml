@@ -13,8 +13,8 @@
 .row
   - @trackers.each do |tracker|
     .col-lg-4
-      .card{:style => "width: 18rem;"}
-        %img.card-img-top{:alt => "Card image cap", :src => "https://codepen.io/eanbowman/pen/BqtvD/image/large.png", width: 75}/
+      .card{:style => "width: 18rem;", class: "mt-5"}
+        %img.card-img-top{:alt => "Card image cap", :src => "/assets/sparkline.png", width: 75}/
         .card-body
           %h5.card-title= tracker.name
           %h6.card-text
